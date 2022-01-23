@@ -7,11 +7,13 @@ import com.jackob101.rekrutacja.service.definition.IBaseService;
 import com.jackob101.rekrutacja.validation.groups.OnCreate;
 import com.jackob101.rekrutacja.validation.groups.OnUpdate;
 import org.springframework.data.domain.Sort;
+import org.springframework.stereotype.Service;
 
 import javax.validation.Validator;
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class ArticleService extends IBaseService<Article> implements IArticleService{
 
     private final ArticleRepository articleRepository;
