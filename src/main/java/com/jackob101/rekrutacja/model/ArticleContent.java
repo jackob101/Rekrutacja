@@ -6,6 +6,8 @@ import org.hibernate.annotations.Immutable;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 @Embeddable
 @Immutable
@@ -13,9 +15,13 @@ import javax.persistence.Embeddable;
 @AllArgsConstructor
 public class ArticleContent {
 
+    @Size(max = 500)
+    @NotBlank(message = "Article content title cannot be blank or null")
     @Column(nullable = false)
     private final String title;
 
+    @Size(max = 10000)
+    @NotBlank(message = "Article content body cannot be blank or null")
     @Column(nullable = false)
     private final String body;
 
