@@ -74,6 +74,7 @@ class ArticleServiceTest {
         assertThrows(RuntimeException.class, () -> articleService.create(testArticle));
     }
 
+
     @Test
     void update_article_successfully() {
 
@@ -114,8 +115,6 @@ class ArticleServiceTest {
         testArticle.setArticleContent(null);
         testArticle.setAuthor(null);
         testArticle.setMagazineName(null);
-
-        doReturn(true).when(articleRepository).existsById(anyLong());
 
         assertThrows(RuntimeException.class, () -> articleService.update(testArticle));
     }
