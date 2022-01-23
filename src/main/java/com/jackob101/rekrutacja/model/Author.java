@@ -24,4 +24,6 @@ public class Author {
     @NotBlank(message = "Author last name cannot be blank or null")
     @Column(nullable = false)
     private String lastName;
+
+    protected Author(){}
 }

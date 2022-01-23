@@ -18,11 +18,13 @@ public class ArticleContent {
     @Size(max = 500)
     @NotBlank(message = "Article content title cannot be blank or null")
     @Column(nullable = false)
-    private final String title;
+    private String title;
 
     @Size(max = 10000)
     @NotBlank(message = "Article content body cannot be blank or null")
     @Column(nullable = false)
-    private final String body;
+    private String body;
+
+    protected ArticleContent(){}
 
 }
