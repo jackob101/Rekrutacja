@@ -15,7 +15,6 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -179,6 +178,18 @@ class ArticleApiTest {
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$[0].publicationDate").value(articleList.get(0).getPublicationDate().toString()));
+
+    }
+
+    @Test
+    void findByKeyword_articles_successfully() throws Exception {
+
+        doReturn(List.of(testArticle)).when(iArticleService).findByKeyword("title");
+
+        mockMvc.perform(get("/article/keyword/title"))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$[0].articleContent.title").value(testArticle.getArticleContent().getTitle()));
 
     }
 }

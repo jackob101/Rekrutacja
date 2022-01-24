@@ -47,6 +47,18 @@ public class ArticleApi {
         return ResponseEntity.ok(byId);
     }
 
+    @GetMapping("keyword/{keyword}")
+    public ResponseEntity<Object> getByKeyword(@PathVariable("keyword") String keyword) {
+
+        log.info("Fetching articles with keyword: " + keyword);
+
+        List<Article> byKeyword = articleService.findByKeyword(keyword);
+
+        log.info("Fetched :" + byKeyword.size() + " articles with keyword: " + keyword);
+
+        return ResponseEntity.ok(byKeyword);
+    }
+
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Object> createArticle(@RequestBody Article article) throws URISyntaxException {
 

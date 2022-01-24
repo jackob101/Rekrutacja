@@ -7,6 +7,8 @@ import com.jackob101.rekrutacja.repository.ArticleRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -14,6 +16,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import javax.validation.Validation;
 import javax.validation.Validator;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Optional;
 
 import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
@@ -172,5 +175,23 @@ class ArticleServiceTest {
         doReturn(false).when(articleRepository).existsById(anyLong());
 
         assertThrows(RuntimeException.class, () -> articleService.delete(1L));
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {"NULL", "''"}, nullValues = "NULL")
+    void findByKeyword_keyword_incorrectValue(String keyword) {
+        assertThrows(RuntimeException.class,() -> articleService.findByKeyword(keyword));
+    }
+
+    @Test
+    void findByKeyword_keyword_successfully() {
+
+        doReturn(List.of(testArticle)).when(articleRepository).findByKeyword("title");
+
+        List<Article> articleList = articleService.findByKeyword("title");
+
+        assertNotNull(articleList);
+        assertEquals(1,articleList.size());
+        assertEquals(testArticle.getArticleContent().getTitle(),articleList.get(0).getArticleContent().getTitle());
     }
 }

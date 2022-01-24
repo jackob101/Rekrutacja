@@ -78,5 +78,14 @@ public class ArticleService extends BaseService<Article> implements IArticleServ
         return articleRepository.save(article);
     }
 
+    @Override
+    public List<Article> findByKeyword(String keyword) {
+
+        if(keyword == null || keyword.isBlank())
+            throw new StatusException("Keyword cannot be null or blank",HttpStatus.BAD_REQUEST);
+
+        return articleRepository.findByKeyword(keyword);
+    }
+
 
 }
