@@ -8,54 +8,49 @@ mvn spring-boot:run
 
 * Endpointy
 
-- /POST/ /article
+** /POST/ /article
 
-  Endpoint przyjmuje *Article* ( dokładny opis niżej )
+Endpoint przyjmuje *Article* ( dokładny opis niżej )
 
-- /PUT/ /article
+** /PUT/ /article
 
-  Endpoint przyjmuje *Article* ( dokładny opis niżej )
+Endpoint przyjmuje *Article* ( dokładny opis niżej )
 
-  Przesyłając model to tego enpointu należy podać *id*.  
+Przesyłając model to tego enpointu należy podać *id*.  
 
-- /GET/ /article/all
+** /GET/ /article/all
 
-  Endpoint zwracający wszystkie artykuły posortowane pod dacie wydania malejąco
+Endpoint zwracający wszystkie artykuły posortowane pod dacie wydania malejąco
 
-- /GET/ /article/{id}
+** /GET/ /article/{id}
 
-  Endpoint zwracający artykuł o podanym *id*. Jeżeli artykuł z danym *id* nie istnieje to zostanie zwrócony wyjątek.
+Endpoint zwracający artykuł o podanym *id*. Jeżeli artykuł z danym *id* nie istnieje to zostanie zwrócony wyjątek.
 
-  Przykład:
-  [[articleId]]
-
-#+name: articleId
+Przykład:
 #+begin_src
   /article/1
 #+end_src
 
 
-- /GET/ /article/keyword/{keyword}
+** /GET/ /article/keyword/{keyword}
 
-  Endpoint który zwraca wszystkie artykuły, które zawierają podany *keyword* w tytule lub treści.
+Endpoint który zwraca wszystkie artykuły, które zawierają podany *keyword* w tytule lub treści.
 
-  Przykład:
+Przykład:
 
-  #+begin_src
+#+begin_src
+  /article/keyword/przyklad
+#+end_src
 
-    /article/keyword/przyklad
-  #+end_src
+** /DELETE/ /article/{id}
 
-- /DELETE/ /article/{id}
+Endpoint który usuwa artykuł o podanym *id*. Jeżeli *id* jest niepoprawne lub taki artykuł nie istnieje to zostanie zwrócony wyjątek.
 
-  Endpoint który usuwa artykuł o podanym *id*. Jeżeli *id* jest niepoprawne lub taki artykuł nie istnieje to zostanie zwrócony wyjątek.
+Przykład:
 
-  Przykład:
-
-  #+begin_src
-
-    /article/1
-  #+end_src
+#+begin_src
+  /article/1
+#+end_src
 
 * Model oraz walidacja
 
