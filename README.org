@@ -28,9 +28,9 @@ mvn spring-boot:run
 
   Przykład:
 
-  #+begin_src
+#+begin_src
     /article/1
-  #+end_src
+#+end_src
 
 - /GET/ /article/keyword/{keyword}
 
@@ -38,9 +38,9 @@ mvn spring-boot:run
 
   Przykład:
 
-  #+begin_src
+#+begin_src
     /article/keyword/przyklad
-  #+end_src
+#+end_src
 
 - /DELETE/ /article/{id}
 
@@ -48,9 +48,9 @@ mvn spring-boot:run
 
   Przykład:
 
-  #+begin_src
+#+begin_src
     /article/1
-  #+end_src
+#+end_src
 
 * Model oraz walidacja
 
