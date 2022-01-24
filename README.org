@@ -8,7 +8,7 @@ mvn spring-boot:run
 
 * Endpointy
 
- /POST/ /article
+- /POST/ /article
 
   Endpoint przyjmuje *Article* ( dokładny opis niżej )
 
@@ -16,7 +16,7 @@ mvn spring-boot:run
 
   Endpoint przyjmuje *Article* ( dokładny opis niżej )
 
-  Przesyłając model to tego enpointu należy podać *id*.  
+  Przesyłając model to tego enpointu należy podać *id*. Jeżeli artykuł z takim *id* nie istnieje zostanie zwrócony wyjątek.
 
 - /GET/ /article/all
 
@@ -70,3 +70,38 @@ mvn spring-boot:run
 |----------+------------+---------------------------------------------------------|
 | name     | string     | Maksymalnie 200 znaków, nie może być puste lub być NULL |
 | lastName | string     | Maksymalnie 200 znaków, nie może być puste lub być NULL |
+
+* Przykładowy JSON
+
+- Przykładowy JSON do stworzenia artykułu
+  #+begin_src js
+{
+    "author":{
+        "name": "Jane",
+        "lastName": "Doe"
+    },
+    "articleContent":{
+        "title": "Some nice article title",
+        "body": "Very interesting article body"
+    },
+    "publicationDate": "2021-01-01",
+    "magazineName": "Popular magazine name"
+}
+  #+end_src
+
+- Przykładowy JSON do aktualizacji artykułu
+  #+begin_src js
+{
+    "id": 1,
+    "author":{
+        "name": "Jane",
+        "lastName": "Doe"
+    },
+    "articleContent":{
+        "title": "Updated title!",
+        "body": "And changed body"
+    },
+    "publicationDate": "2021-01-01",
+    "magazineName": "Popular magazine name"
+}
+  #+end_src
