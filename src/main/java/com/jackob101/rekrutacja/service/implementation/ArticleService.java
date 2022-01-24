@@ -1,5 +1,6 @@
 package com.jackob101.rekrutacja.service.implementation;
 
+import com.jackob101.rekrutacja.exception.StatusException;
 import com.jackob101.rekrutacja.model.Article;
 import com.jackob101.rekrutacja.repository.ArticleRepository;
 import com.jackob101.rekrutacja.service.definition.IArticleService;
@@ -7,6 +8,7 @@ import com.jackob101.rekrutacja.service.definition.IBaseService;
 import com.jackob101.rekrutacja.validation.groups.OnCreate;
 import com.jackob101.rekrutacja.validation.groups.OnUpdate;
 import org.springframework.data.domain.Sort;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import javax.validation.Validator;
@@ -30,7 +32,7 @@ public class ArticleService extends IBaseService<Article> implements IArticleSer
 
         Optional<Article> optionalArticle = articleRepository.findById(id);
 
-        return optionalArticle.orElseThrow(() -> new RuntimeException("Article with ID: " + id + " was not found"));
+        return optionalArticle.orElseThrow(() -> new StatusException("Article with ID: " + id + " was not found", HttpStatus.BAD_REQUEST));
     }
 
     @Override
@@ -39,12 +41,12 @@ public class ArticleService extends IBaseService<Article> implements IArticleSer
         checkId(id);
 
         if (!articleRepository.existsById(id))
-            throw new RuntimeException("Article with ID: " + id + " was not found");
+            throw new StatusException("Article with ID: " + id + " was not found", HttpStatus.BAD_REQUEST);
 
         articleRepository.deleteById(id);
 
         if (articleRepository.existsById(id))
-            throw new RuntimeException("Could not delete Article with ID: " + id);
+            throw new StatusException("Could not delete Article with ID: " + id, HttpStatus.INTERNAL_SERVER_ERROR);
 
     }
 
@@ -60,7 +62,7 @@ public class ArticleService extends IBaseService<Article> implements IArticleSer
 
         boolean isFound = articleRepository.existsById(article.getId());
         if(!isFound)
-            throw new RuntimeException("Article with ID: " + article.getId() + " doesn't exists");
+            throw new StatusException("Article with ID: " + article.getId() + " doesn't exists", HttpStatus.BAD_REQUEST);
 
         return articleRepository.save(article);
     }
@@ -71,7 +73,7 @@ public class ArticleService extends IBaseService<Article> implements IArticleSer
 
         if(article.getId() != null)
             if (articleRepository.existsById(article.getId()))
-                throw new RuntimeException("Could not create Article because ID:" + article.getId() + " is already taken");
+                throw new StatusException("Could not create Article because ID:" + article.getId() + " is already taken", HttpStatus.BAD_REQUEST);
 
         return articleRepository.save(article);
     }
