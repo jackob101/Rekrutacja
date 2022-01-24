@@ -1,9 +1,15 @@
 * Jak uruchomić?
 
-W folderze zawierającym =pom.xml= należy użyć polecenia
+Aby uruchomić aplikacje należy folderze zawierającym =pom.xml= użyć polecenia
 
 #+begin_src
 mvn spring-boot:run
+#+end_src
+
+Aby uruchomić testy to w tym samym folderze należy użyć polecenia
+
+#+begin_src
+mvn test
 #+end_src
 
 * Endpointy
@@ -37,6 +43,8 @@ mvn spring-boot:run
   Przykład:
   =/article/keyword/przyklad=
 
+  Zwróci wszystkie artykuły, które zawierają *przykład* w tytule lub treści.
+
 - /DELETE/ /article/{id}
 
   Endpoint który usuwa artykuł o podanym *id*. Jeżeli *id* jest niepoprawne lub taki artykuł nie istnieje to zostanie zwrócony wyjątek.
@@ -59,10 +67,10 @@ mvn spring-boot:run
 
 *ArticleContent*
 
-| pole  | typ danych | walidacja                                                |
-|-------+------------+----------------------------------------------------------|
-| title | string     | Maksymalnie 500 znaków, nie może być puste lub być NULL  |
-| body  | string     | Maksymalnie 10000 znaków, nie może być pust lub być NULL |
+| pole  | typ danych | walidacja                                                 |
+|-------+------------+-----------------------------------------------------------|
+| title | string     | Maksymalnie 500 znaków, nie może być puste lub być NULL   |
+| body  | string     | Maksymalnie 10000 znaków, nie może być puste lub być NULL |
 
 *Author*
 
