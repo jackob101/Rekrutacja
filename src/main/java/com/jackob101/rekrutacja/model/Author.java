@@ -25,5 +25,6 @@ public class Author {
     @Column(nullable = false)
     private String lastName;
 
-    protected Author(){}
+    protected Author() {
+    }
 }

@@ -3,8 +3,8 @@ package com.jackob101.rekrutacja.service.implementation;
 import com.jackob101.rekrutacja.exception.StatusException;
 import com.jackob101.rekrutacja.model.Article;
 import com.jackob101.rekrutacja.repository.ArticleRepository;
-import com.jackob101.rekrutacja.service.definition.IArticleService;
 import com.jackob101.rekrutacja.service.definition.BaseService;
+import com.jackob101.rekrutacja.service.definition.IArticleService;
 import com.jackob101.rekrutacja.validation.groups.OnCreate;
 import com.jackob101.rekrutacja.validation.groups.OnUpdate;
 import org.springframework.data.domain.Sort;
@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class ArticleService extends BaseService<Article> implements IArticleService{
+public class ArticleService extends BaseService<Article> implements IArticleService {
 
     private final ArticleRepository articleRepository;
 
@@ -61,7 +61,7 @@ public class ArticleService extends BaseService<Article> implements IArticleServ
         validate(article, OnUpdate.class);
 
         boolean isFound = articleRepository.existsById(article.getId());
-        if(!isFound)
+        if (!isFound)
             throw new StatusException("Article with ID: " + article.getId() + " doesn't exists", HttpStatus.BAD_REQUEST);
 
         return articleRepository.save(article);
@@ -71,7 +71,7 @@ public class ArticleService extends BaseService<Article> implements IArticleServ
     public Article create(Article article) {
         validate(article, OnCreate.class);
 
-        if(article.getId() != null)
+        if (article.getId() != null)
             if (articleRepository.existsById(article.getId()))
                 throw new StatusException("Could not create Article because ID:" + article.getId() + " is already taken", HttpStatus.BAD_REQUEST);
 
@@ -81,8 +81,8 @@ public class ArticleService extends BaseService<Article> implements IArticleServ
     @Override
     public List<Article> findByKeyword(String keyword) {
 
-        if(keyword == null || keyword.isBlank())
-            throw new StatusException("Keyword cannot be null or blank",HttpStatus.BAD_REQUEST);
+        if (keyword == null || keyword.isBlank())
+            throw new StatusException("Keyword cannot be null or blank", HttpStatus.BAD_REQUEST);
 
         return articleRepository.findByKeyword(keyword);
     }

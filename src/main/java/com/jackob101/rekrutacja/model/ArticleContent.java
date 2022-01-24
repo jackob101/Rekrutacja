@@ -25,6 +25,7 @@ public class ArticleContent {
     @Column(nullable = false)
     private String body;
 
-    protected ArticleContent(){}
+    protected ArticleContent() {
+    }
 
 }

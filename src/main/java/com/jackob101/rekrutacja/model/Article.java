@@ -53,7 +53,8 @@ public class Article {
     @CreationTimestamp
     private Timestamp savedTimestamp;
 
-    protected Article(){}
+    protected Article() {
+    }
 
 
     public Article(ArticleContent articleContent, Author author, LocalDate publicationDate, String magazineName) {

@@ -1,4 +1,4 @@
 package com.jackob101.rekrutacja.validation.groups;
 
-public interface OnUpdate extends OnCreate{
+public interface OnUpdate extends OnCreate {
 }
