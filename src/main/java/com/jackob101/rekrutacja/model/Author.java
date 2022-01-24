@@ -15,12 +15,12 @@ import javax.validation.constraints.Size;
 @Embeddable
 public class Author {
 
-    @Size(max = 200)
+    @Size(max = 200, message = "Author name max size is 200 chars")
     @NotBlank(message = "Author name cannot be blank or null")
     @Column(nullable = false)
     private String name;
 
-    @Size(max = 200)
+    @Size(max = 200, message = "Author last name max size is 200 chars")
     @NotBlank(message = "Author last name cannot be blank or null")
     @Column(nullable = false)
     private String lastName;

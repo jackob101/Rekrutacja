@@ -15,12 +15,12 @@ import javax.validation.constraints.Size;
 @AllArgsConstructor
 public class ArticleContent {
 
-    @Size(max = 500)
+    @Size(max = 500, message = "Title max size is 500 chars")
     @NotBlank(message = "Article content title cannot be blank or null")
     @Column(nullable = false)
     private String title;
 
-    @Size(max = 10000)
+    @Size(max = 10000, message = "Body max size is 10000 chars")
     @NotBlank(message = "Article content body cannot be blank or null")
     @Column(nullable = false)
     private String body;

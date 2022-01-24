@@ -44,7 +44,7 @@ public class Article {
     private LocalDate publicationDate;
 
 
-    @Size(max = 500)
+    @Size(max = 500, message = "Magazine name max size is 500 characters")
     @NotBlank(message = "Magazine name cannot be null or blank")
     @Column(nullable = false)
     private String magazineName;
