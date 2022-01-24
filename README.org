@@ -27,7 +27,7 @@ mvn spring-boot:run
   Endpoint zwracający artykuł o podanym *id*. Jeżeli artykuł z danym *id* nie istnieje to zostanie zwrócony wyjątek.
 
   Przykład:
-  //article/1/
+  =/article/1=
 
 
 - /GET/ /article/keyword/{keyword}
@@ -35,14 +35,14 @@ mvn spring-boot:run
   Endpoint który zwraca wszystkie artykuły, które zawierają podany *keyword* w tytule lub treści.
 
   Przykład:
-  //article/keyword/przyklad/
+  =/article/keyword/przyklad=
 
 - /DELETE/ /article/{id}
 
   Endpoint który usuwa artykuł o podanym *id*. Jeżeli *id* jest niepoprawne lub taki artykuł nie istnieje to zostanie zwrócony wyjątek.
 
   Przykład:
-  //article/1/
+  =article/1=
 
 * Model oraz walidacja
 
